@@ -1,4 +1,4 @@
-#IF_ELSE_WHILE_TASK
+# IF ELSE WHILE TASK
 <p>
 This program will assign a random number to the variable n <br> 
 each time it is executed.<br>
