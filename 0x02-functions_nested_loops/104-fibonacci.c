@@ -13,7 +13,7 @@ int main(void)
 	int count;
 
 	sum = 0;
-	first = 1;
+	first = 0;
 	second = 0;
 	count = 0;
 
