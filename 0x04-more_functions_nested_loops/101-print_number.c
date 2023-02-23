@@ -1,68 +1,47 @@
-#include <math.h>
 #include "main.h"
 
 /**
- * power - exponents
- * @base: base
- * @exp: exponent
- * Return: result (int)
+ * print_number - Function that prints an integer.
+ * @n: int type number
+ * Description: Can only use _putchar to print.
  */
-
-int  power(int base, int exp)
-{
-	int i, num;
-
-	num = 1;
-	for (i = 0; i < exp; ++i)
-		num *= base;
-
-	return (num);
-}
-
-/**
- * print_number - prints an integer
- * @n: number to print
- * Return void
- */
-
 void print_number(int n)
 {
-	int negative = 0;
-	int digit;
-	int divisor;
-	int begin = 0;
-	int place = 10;
+	long m; /* power of 10 */
+	int c; /* boolean check */
+	long num; /* convert int to long */
 
-	if (n < 0)
+	num = n;
+	/* negatives */
+	if (num < 0)
 	{
-		negative = 1;
-		n = n * -1;
+		num *= -1;
+		_putchar('-');
 	}
-	while (place >= 0)
+
+	/* count up */
+	m = 1;
+	c = 1;
+	while (c)
 	{
-		/*divisor = pow(10, place);*/
-		divisor = power(10, place);
-		digit = ((n / divisor) % 10);
-		if (digit == 0 && begin == 0)
+		if (num / (m * 10) > 0)
+			m *= 10;
+		else
+			c = 0;
+	}
+
+	/* count down */
+	while (num >= 0)
+	{
+		if (m == 1)
 		{
-			place--;
-		}
-		else if (digit != 0 && begin == 0)
-		{
-			begin = 1;
-			if (negative == 1)
-				_putchar('-');
-			_putchar('0' + digit);
-			place--;
+			_putchar(num % 10 + '0');
+			num = -1;
 		}
 		else
 		{
-			_putchar('0' + digit);
-			place--;
+			_putchar((num / m % 10) + '0');
+			m /= 10;
 		}
-	}
-	if (digit == 0 && divisor == 1)
-	{
-		_putchar(48);
 	}
 }
